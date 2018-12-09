@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import BudgetItem from "./components/BudgetItem";
 import BudgetSummary from "./components/BudgetSummary";
+import buildGetHeat from "./utils/heatCalculator";
 import {
   AppWrapper,
   CoolButton,
@@ -9,7 +10,7 @@ import {
 } from "./components/styledComponents";
 
 const defaultItem = {
-  name: "Rename Me",
+  name: "item",
   amount: "",
   isPositive: false
 };
@@ -29,6 +30,10 @@ class App extends Component {
       budgetItems.push({ ...defaultItem, id: this.uniqueId() });
       return { budgetItems };
     });
+  };
+
+  onChangeSalary = value => {
+    this.setState(({ salary }) => ({ salary: value }));
   };
 
   updateItem = (id, data) => {
@@ -55,13 +60,24 @@ class App extends Component {
 
   render() {
     const { budgetItems, salary } = this.state;
+
+    const getHeat = buildGetHeat(budgetItems);
+
     return (
       <AppWrapper>
         <h2>Budget Calculator</h2>
         <span>Annual Salary: </span>
-        <ClearInput value={salary} />
+        <ClearInput
+          value={salary}
+          onChange={e => this.onChangeSalary(e.target.value)}
+        />
         {budgetItems.map(item => (
-          <BudgetItem key={item.id} item={item} updateItem={this.updateItem} />
+          <BudgetItem
+            key={item.id}
+            item={item}
+            updateItem={this.updateItem}
+            heat={getHeat(item)}
+          />
         ))}
         <CoolButton onClick={this.addItem}>Add Item</CoolButton>
         <BudgetSummary budgetItems={budgetItems} salary={salary} />

@@ -13,11 +13,17 @@ class BudgetItem extends Component {
   };
 
   render() {
-    const { name, amount } = this.props.item;
+    const { heat, item } = this.props;
+    const { name, amount } = item;
+
     return (
       <div>
         <BudgetName value={name} onChange={this.buildOnChange("name")} />
-        <BudgetValue value={amount} onChange={this.buildOnChange("amount")} />
+        <BudgetValue
+          value={amount}
+          onChange={this.buildOnChange("amount")}
+          heat={heat}
+        />
       </div>
     );
   }

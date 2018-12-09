@@ -7,6 +7,7 @@ class BudgetSummary extends Component {
     const { budgetItems } = this.props;
     return budgetItems.reduce((prev, item) => {
       const { amount, isPositive } = item;
+      if (!amount) return prev;
       const floatAmount = parseFloat(amount);
       return isPositive ? prev - floatAmount : prev + floatAmount;
     }, 0);

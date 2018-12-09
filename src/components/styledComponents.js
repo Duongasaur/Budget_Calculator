@@ -48,6 +48,7 @@ export const BudgetValue = styled.input`
   border: 1px solid #3b3d3f;
   border-left: none;
   text-align: right;
+  background-color: ${props => props.heat};
 `;
 
 export const ClearInput = styled.input`
