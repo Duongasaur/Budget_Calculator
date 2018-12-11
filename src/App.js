@@ -6,11 +6,12 @@ import buildGetHeat from "./utils/heatCalculator";
 import {
   AppWrapper,
   CoolButton,
-  ClearInput
+  ClearInput,
+  DollarSign
 } from "./components/styledComponents";
 
 const defaultItem = {
-  name: "item",
+  name: "",
   amount: "",
   isPositive: false
 };
@@ -67,6 +68,7 @@ class App extends Component {
       <AppWrapper>
         <h2>Budget Calculator</h2>
         <span>Annual Salary: </span>
+        <DollarSign>$ </DollarSign>
         <ClearInput
           value={salary}
           onChange={e => this.onChangeSalary(e.target.value)}

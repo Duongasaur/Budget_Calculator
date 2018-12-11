@@ -19,7 +19,12 @@ export const CoolButton = styled.button`
   height: 36px;
   border-radius: 3px;
   border: 1px solid #3b3d3f;
+  margin-top: 5px;
   margin-bottom: 15px;
+
+  &::focus {
+    outline: none;
+  }
 `;
 
 export const SummarySpan = styled.span`
@@ -48,7 +53,16 @@ export const BudgetValue = styled.input`
   border: 1px solid #3b3d3f;
   border-left: none;
   text-align: right;
+  z-index: -1;
   background-color: ${props => props.heat};
+`;
+
+export const DollarSign = styled.span`
+  position: relative;
+  color: #3b3d3f;
+  font-size: 12px;
+  margin-right: -10px;
+  width: 0px;
 `;
 
 export const ClearInput = styled.input`

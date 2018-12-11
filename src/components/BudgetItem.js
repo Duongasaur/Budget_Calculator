@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { BudgetName, BudgetValue } from "./styledComponents";
+import { BudgetName, BudgetValue, DollarSign } from "./styledComponents";
 
 class BudgetItem extends Component {
   buildOnChange = key => e => {
@@ -18,9 +18,15 @@ class BudgetItem extends Component {
 
     return (
       <div>
-        <BudgetName value={name} onChange={this.buildOnChange("name")} />
+        <BudgetName
+          value={name}
+          placeholder="Rename me"
+          onChange={this.buildOnChange("name")}
+        />
+        <DollarSign>$</DollarSign>
         <BudgetValue
           value={amount}
+          placeholder="amount"
           onChange={this.buildOnChange("amount")}
           heat={heat}
         />
